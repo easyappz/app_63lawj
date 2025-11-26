@@ -4,8 +4,8 @@ import ErrorBoundary from './ErrorBoundary';
 import { AuthProvider } from './context/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
 import Layout from './components/Layout';
-import Login from './components/Login';
-import Register from './components/Register';
+import Login from './pages/Login';
+import Register from './pages/Register';
 import { Home } from './components/Home';
 import './App.css';
 

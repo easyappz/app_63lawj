@@ -23,7 +23,7 @@ export const getPosts = async (page = 1, pageSize = 20) => {
  * @returns {Promise} Response with created post
  */
 export const createPost = async (data) => {
-  const response = await instance.post('/api/posts/', data);
+  const response = await instance.post('/api/posts/create/', data);
   return response.data;
 };
 
@@ -43,7 +43,7 @@ export const getPost = async (id) => {
  * @returns {Promise} Response
  */
 export const deletePost = async (id) => {
-  const response = await instance.delete(`/api/posts/${id}/`);
+  const response = await instance.delete(`/api/posts/${id}/delete/`);
   return response.data;
 };
 

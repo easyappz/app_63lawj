@@ -1,0 +1,98 @@
+get:
+  summary: Get user profile
+  description: Returns profile information for a specific user including their posts
+  tags:
+    - Profile
+  x-isSecure: true
+  security:
+    - cookieAuth: []
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+      description: User ID
+  responses:
+    '200':
+      description: User profile with posts
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+                example: 1
+              email:
+                type: string
+                example: user@example.com
+              username:
+                type: string
+                example: johndoe
+              first_name:
+                type: string
+                example: John
+              last_name:
+                type: string
+                example: Doe
+              bio:
+                type: string
+                nullable: true
+                example: Software developer and tech enthusiast
+              avatar_url:
+                type: string
+                nullable: true
+                example: https://example.com/avatar.jpg
+              created_at:
+                type: string
+                format: date-time
+                example: '2024-01-15T10:30:00Z'
+              posts:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    content:
+                      type: string
+                      example: This is my first post!
+                    likes_count:
+                      type: integer
+                      example: 5
+                    is_liked:
+                      type: boolean
+                      example: false
+                    comments_count:
+                      type: integer
+                      example: 3
+                    created_at:
+                      type: string
+                      format: date-time
+                      example: '2024-01-15T10:30:00Z'
+                    updated_at:
+                      type: string
+                      format: date-time
+                      example: '2024-01-15T10:30:00Z'
+    '404':
+      description: User not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: User not found
+    '401':
+      description: Not authenticated
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: Authentication required

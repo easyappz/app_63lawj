@@ -1,0 +1,48 @@
+delete:
+  summary: Delete a comment
+  description: Deletes a comment (only the author can delete their own comments)
+  tags:
+    - Comments
+  x-isSecure: true
+  security:
+    - cookieAuth: []
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+      description: Comment ID
+  responses:
+    '204':
+      description: Comment successfully deleted
+    '403':
+      description: Not authorized to delete this comment
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: You are not authorized to delete this comment
+    '404':
+      description: Comment not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: Comment not found
+    '401':
+      description: Not authenticated
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: Authentication required

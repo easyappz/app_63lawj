@@ -1,0 +1,85 @@
+get:
+  summary: Get a single post
+  description: Returns detailed information about a specific post
+  tags:
+    - Posts
+  x-isSecure: true
+  security:
+    - cookieAuth: []
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+      description: Post ID
+  responses:
+    '200':
+      description: Post details
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+                example: 1
+              content:
+                type: string
+                example: This is my first post!
+              author:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  username:
+                    type: string
+                    example: johndoe
+                  first_name:
+                    type: string
+                    example: John
+                  last_name:
+                    type: string
+                    example: Doe
+                  avatar_url:
+                    type: string
+                    nullable: true
+                    example: https://example.com/avatar.jpg
+              likes_count:
+                type: integer
+                example: 5
+              is_liked:
+                type: boolean
+                example: false
+              comments_count:
+                type: integer
+                example: 3
+              created_at:
+                type: string
+                format: date-time
+                example: '2024-01-15T10:30:00Z'
+              updated_at:
+                type: string
+                format: date-time
+                example: '2024-01-15T10:30:00Z'
+    '404':
+      description: Post not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: Post not found
+    '401':
+      description: Not authenticated
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: Authentication required

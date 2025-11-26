@@ -1,0 +1,53 @@
+get:
+  summary: Get current user
+  description: Returns the currently authenticated user's data
+  tags:
+    - Authentication
+  x-isSecure: true
+  security:
+    - cookieAuth: []
+  responses:
+    '200':
+      description: Current user data
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+                example: 1
+              email:
+                type: string
+                example: user@example.com
+              username:
+                type: string
+                example: johndoe
+              first_name:
+                type: string
+                example: John
+              last_name:
+                type: string
+                example: Doe
+              bio:
+                type: string
+                nullable: true
+                example: Software developer
+              avatar_url:
+                type: string
+                nullable: true
+                example: https://example.com/avatar.jpg
+              created_at:
+                type: string
+                format: date-time
+                example: '2024-01-15T10:30:00Z'
+    '401':
+      description: Not authenticated
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: Authentication required

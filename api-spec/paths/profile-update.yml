@@ -1,0 +1,86 @@
+patch:
+  summary: Update own profile
+  description: Updates the current user's profile information (first_name, last_name, bio, avatar_url)
+  tags:
+    - Profile
+  x-isSecure: true
+  security:
+    - cookieAuth: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            first_name:
+              type: string
+              example: John
+            last_name:
+              type: string
+              example: Doe
+            bio:
+              type: string
+              maxLength: 500
+              example: Software developer and tech enthusiast
+            avatar_url:
+              type: string
+              format: uri
+              example: https://example.com/avatar.jpg
+  responses:
+    '200':
+      description: Profile successfully updated
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+                example: 1
+              email:
+                type: string
+                example: user@example.com
+              username:
+                type: string
+                example: johndoe
+              first_name:
+                type: string
+                example: John
+              last_name:
+                type: string
+                example: Doe
+              bio:
+                type: string
+                nullable: true
+                example: Software developer and tech enthusiast
+              avatar_url:
+                type: string
+                nullable: true
+                example: https://example.com/avatar.jpg
+              created_at:
+                type: string
+                format: date-time
+                example: '2024-01-15T10:30:00Z'
+    '400':
+      description: Validation error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              bio:
+                type: array
+                items:
+                  type: string
+                example: ['Ensure this field has no more than 500 characters.']
+    '401':
+      description: Not authenticated
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: Authentication required

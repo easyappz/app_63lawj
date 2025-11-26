@@ -1,0 +1,101 @@
+post:
+  summary: Create a comment
+  description: Creates a new comment for a specific post
+  tags:
+    - Comments
+  x-isSecure: true
+  security:
+    - cookieAuth: []
+  parameters:
+    - name: post_id
+      in: path
+      required: true
+      schema:
+        type: integer
+      description: Post ID
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - content
+          properties:
+            content:
+              type: string
+              minLength: 1
+              maxLength: 1000
+              example: Great post!
+  responses:
+    '201':
+      description: Comment successfully created
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+                example: 1
+              content:
+                type: string
+                example: Great post!
+              author:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 2
+                  username:
+                    type: string
+                    example: janedoe
+                  first_name:
+                    type: string
+                    example: Jane
+                  last_name:
+                    type: string
+                    example: Doe
+                  avatar_url:
+                    type: string
+                    nullable: true
+                    example: null
+              post_id:
+                type: integer
+                example: 1
+              created_at:
+                type: string
+                format: date-time
+                example: '2024-01-15T11:00:00Z'
+    '400':
+      description: Validation error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              content:
+                type: array
+                items:
+                  type: string
+                example: ['This field is required.']
+    '404':
+      description: Post not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: Post not found
+    '401':
+      description: Not authenticated
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: Authentication required

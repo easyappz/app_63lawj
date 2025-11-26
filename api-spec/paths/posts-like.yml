@@ -1,0 +1,49 @@
+post:
+  summary: Like or unlike a post
+  description: Toggles like status for a post (like if not liked, unlike if already liked)
+  tags:
+    - Posts
+  x-isSecure: true
+  security:
+    - cookieAuth: []
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+      description: Post ID
+  responses:
+    '200':
+      description: Like status toggled
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              is_liked:
+                type: boolean
+                example: true
+              likes_count:
+                type: integer
+                example: 6
+    '404':
+      description: Post not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: Post not found
+    '401':
+      description: Not authenticated
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: Authentication required

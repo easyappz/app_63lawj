@@ -1,0 +1,73 @@
+post:
+  summary: Login user
+  description: Authenticates user with email and password, returns user data and sets HttpOnly cookie
+  tags:
+    - Authentication
+  x-isSecure: false
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - email
+            - password
+          properties:
+            email:
+              type: string
+              format: email
+              example: user@example.com
+            password:
+              type: string
+              example: securePassword123
+  responses:
+    '200':
+      description: Successfully logged in
+      headers:
+        Set-Cookie:
+          schema:
+            type: string
+            example: sessionid=abc123; HttpOnly; Path=/; SameSite=Lax
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+                example: 1
+              email:
+                type: string
+                example: user@example.com
+              username:
+                type: string
+                example: johndoe
+              first_name:
+                type: string
+                example: John
+              last_name:
+                type: string
+                example: Doe
+              bio:
+                type: string
+                nullable: true
+                example: null
+              avatar_url:
+                type: string
+                nullable: true
+                example: null
+              created_at:
+                type: string
+                format: date-time
+                example: '2024-01-15T10:30:00Z'
+    '401':
+      description: Invalid credentials
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: Invalid credentials

@@ -1,0 +1,94 @@
+post:
+  summary: Create a new post
+  description: Creates a new post with the provided content
+  tags:
+    - Posts
+  x-isSecure: true
+  security:
+    - cookieAuth: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - content
+          properties:
+            content:
+              type: string
+              minLength: 1
+              maxLength: 5000
+              example: This is my new post!
+  responses:
+    '201':
+      description: Post successfully created
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+                example: 1
+              content:
+                type: string
+                example: This is my new post!
+              author:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  username:
+                    type: string
+                    example: johndoe
+                  first_name:
+                    type: string
+                    example: John
+                  last_name:
+                    type: string
+                    example: Doe
+                  avatar_url:
+                    type: string
+                    nullable: true
+                    example: null
+              likes_count:
+                type: integer
+                example: 0
+              is_liked:
+                type: boolean
+                example: false
+              comments_count:
+                type: integer
+                example: 0
+              created_at:
+                type: string
+                format: date-time
+                example: '2024-01-15T10:30:00Z'
+              updated_at:
+                type: string
+                format: date-time
+                example: '2024-01-15T10:30:00Z'
+    '400':
+      description: Validation error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              content:
+                type: array
+                items:
+                  type: string
+                example: ['This field is required.']
+    '401':
+      description: Not authenticated
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: Authentication required

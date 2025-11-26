@@ -1,0 +1,77 @@
+get:
+  summary: Get comments for a post
+  description: Returns a list of all comments for a specific post
+  tags:
+    - Comments
+  x-isSecure: true
+  security:
+    - cookieAuth: []
+  parameters:
+    - name: post_id
+      in: path
+      required: true
+      schema:
+        type: integer
+      description: Post ID
+  responses:
+    '200':
+      description: List of comments
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 1
+                content:
+                  type: string
+                  example: Great post!
+                author:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 2
+                    username:
+                      type: string
+                      example: janedoe
+                    first_name:
+                      type: string
+                      example: Jane
+                    last_name:
+                      type: string
+                      example: Doe
+                    avatar_url:
+                      type: string
+                      nullable: true
+                      example: https://example.com/avatar2.jpg
+                post_id:
+                  type: integer
+                  example: 1
+                created_at:
+                  type: string
+                  format: date-time
+                  example: '2024-01-15T11:00:00Z'
+    '404':
+      description: Post not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: Post not found
+    '401':
+      description: Not authenticated
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: Authentication required

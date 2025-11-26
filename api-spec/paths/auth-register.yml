@@ -1,0 +1,90 @@
+post:
+  summary: Register a new user
+  description: Creates a new user account with email, username, password, first_name, and last_name
+  tags:
+    - Authentication
+  x-isSecure: false
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - email
+            - username
+            - password
+            - first_name
+            - last_name
+          properties:
+            email:
+              type: string
+              format: email
+              example: user@example.com
+            username:
+              type: string
+              minLength: 3
+              maxLength: 150
+              example: johndoe
+            password:
+              type: string
+              minLength: 8
+              example: securePassword123
+            first_name:
+              type: string
+              example: John
+            last_name:
+              type: string
+              example: Doe
+  responses:
+    '201':
+      description: User successfully registered
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+                example: 1
+              email:
+                type: string
+                example: user@example.com
+              username:
+                type: string
+                example: johndoe
+              first_name:
+                type: string
+                example: John
+              last_name:
+                type: string
+                example: Doe
+              bio:
+                type: string
+                nullable: true
+                example: null
+              avatar_url:
+                type: string
+                nullable: true
+                example: null
+              created_at:
+                type: string
+                format: date-time
+                example: '2024-01-15T10:30:00Z'
+    '400':
+      description: Validation error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              email:
+                type: array
+                items:
+                  type: string
+                example: ['User with this email already exists.']
+              username:
+                type: array
+                items:
+                  type: string
+                example: ['User with this username already exists.']

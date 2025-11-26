@@ -4,10 +4,13 @@ from api.views import (
     LoginView,
     LogoutView,
     MeView,
-    PostListCreateView,
+    PostListView,
+    PostCreateView,
     PostDetailView,
+    PostDeleteView,
     PostLikeView,
-    CommentListCreateView,
+    CommentListView,
+    CommentCreateView,
     CommentDeleteView,
     ProfileDetailView,
     ProfileUpdateView
@@ -21,12 +24,15 @@ urlpatterns = [
     path('auth/me/', MeView.as_view(), name='auth-me'),
     
     # Posts endpoints
-    path('posts/', PostListCreateView.as_view(), name='posts-list-create'),
+    path('posts/', PostListView.as_view(), name='posts-list'),
+    path('posts/create/', PostCreateView.as_view(), name='posts-create'),
     path('posts/<int:id>/', PostDetailView.as_view(), name='posts-detail'),
+    path('posts/<int:id>/delete/', PostDeleteView.as_view(), name='posts-delete'),
     path('posts/<int:id>/like/', PostLikeView.as_view(), name='posts-like'),
     
     # Comments endpoints
-    path('posts/<int:post_id>/comments/', CommentListCreateView.as_view(), name='comments-list-create'),
+    path('posts/<int:post_id>/comments/', CommentListView.as_view(), name='comments-list'),
+    path('posts/<int:post_id>/comments/create/', CommentCreateView.as_view(), name='comments-create'),
     path('comments/<int:id>/', CommentDeleteView.as_view(), name='comments-delete'),
     
     # Profile endpoints

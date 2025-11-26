@@ -7,6 +7,7 @@ import Layout from './components/Layout';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Feed from './pages/Feed';
+import Profile from './pages/Profile';
 import { Home } from './components/Home';
 import './App.css';
 
@@ -34,7 +35,7 @@ function App() {
             }
           >
             <Route index element={<Feed />} />
-            <Route path="profile/:id" element={<Home />} />
+            <Route path="profile/:id" element={<Profile />} />
           </Route>
         </Routes>
       </AuthProvider>

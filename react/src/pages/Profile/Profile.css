@@ -168,6 +168,7 @@
   gap: 16px;
 }
 
+/* Tablet responsive styles */
 @media (max-width: 768px) {
   .profile-container {
     padding-bottom: 20px;
@@ -178,7 +179,7 @@
   }
 
   .profile-info-section {
-    padding: 16px 16px;
+    padding: 16px;
   }
 
   .profile-avatar-container {
@@ -216,5 +217,108 @@
 
   .profile-section-title h2 {
     font-size: 18px;
+  }
+
+  .profile-posts-list {
+    gap: 12px;
+  }
+}
+
+/* Mobile responsive styles */
+@media (max-width: 480px) {
+  .profile-container {
+    padding-bottom: 16px;
+  }
+
+  .profile-cover {
+    height: 160px;
+  }
+
+  .profile-info-section {
+    padding: 12px;
+  }
+
+  .profile-avatar-container {
+    position: static;
+    text-align: center;
+    margin-top: -50px;
+    margin-bottom: 12px;
+  }
+
+  .profile-avatar-large {
+    width: 100px;
+    height: 100px;
+    font-size: 40px;
+    border-width: 3px;
+    margin: 0 auto;
+  }
+
+  .profile-details {
+    margin-top: 0;
+  }
+
+  .profile-name {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .profile-name-section {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .profile-edit-button {
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 14px;
+    min-height: 44px;
+  }
+
+  .profile-username {
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .profile-bio {
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .profile-meta {
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .profile-join-date {
+    font-size: 14px;
+  }
+
+  .profile-content {
+    max-width: 100%;
+  }
+
+  .profile-section-title {
+    padding: 10px 12px;
+    margin-bottom: 12px;
+  }
+
+  .profile-section-title h2 {
+    font-size: 16px;
+  }
+
+  .profile-posts-count {
+    font-size: 14px;
+  }
+
+  .profile-no-posts {
+    padding: 30px 16px;
+    font-size: 14px;
+  }
+
+  .profile-posts-list {
+    gap: 10px;
   }
 }

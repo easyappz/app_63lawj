@@ -180,3 +180,104 @@
   color: #65676b;
   font-size: 14px;
 }
+
+/* Tablet responsive styles */
+@media (max-width: 768px) {
+  .post-header {
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  .post-content {
+    padding: 0 12px 12px 12px;
+    font-size: 14px;
+  }
+
+  .post-stats {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .post-actions {
+    padding: 4px 12px;
+  }
+
+  .post-action-button {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+
+  .post-comments-section {
+    padding: 10px 12px 12px 12px;
+  }
+}
+
+/* Mobile responsive styles */
+@media (max-width: 480px) {
+  .post-card {
+    border-radius: 6px;
+  }
+
+  .post-header {
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .post-avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .post-author-name {
+    font-size: 14px;
+  }
+
+  .post-date {
+    font-size: 12px;
+  }
+
+  .post-delete-button {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    min-width: 40px;
+    min-height: 40px;
+  }
+
+  .post-content {
+    padding: 0 10px 12px 10px;
+    font-size: 14px;
+  }
+
+  .post-stats {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  .post-actions {
+    padding: 4px 10px;
+    gap: 2px;
+  }
+
+  .post-action-button {
+    padding: 10px 8px;
+    font-size: 14px;
+    gap: 4px;
+    min-height: 44px;
+  }
+
+  .action-icon {
+    font-size: 20px;
+  }
+
+  .post-comments-section {
+    padding: 10px;
+  }
+
+  .comments-loading,
+  .no-comments {
+    padding: 16px;
+    font-size: 14px;
+  }
+}

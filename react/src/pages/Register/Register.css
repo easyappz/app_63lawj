@@ -145,6 +145,26 @@
   text-decoration: underline;
 }
 
+/* Tablet and Mobile responsive styles */
+@media (max-width: 768px) {
+  .register-container {
+    padding: 16px;
+  }
+
+  .register-card {
+    padding: 32px;
+    max-width: 100%;
+  }
+
+  .register-title {
+    font-size: 24px;
+  }
+
+  .register-subtitle {
+    font-size: 14px;
+  }
+}
+
 @media (max-width: 600px) {
   .form-row {
     grid-template-columns: 1fr;
@@ -152,5 +172,60 @@
 
   .register-card {
     padding: 30px 20px;
+  }
+}
+
+/* Mobile responsive styles */
+@media (max-width: 480px) {
+  .register-container {
+    padding: 12px;
+  }
+
+  .register-card {
+    padding: 24px 16px;
+    max-width: 100%;
+  }
+
+  .register-title {
+    font-size: 22px;
+  }
+
+  .register-subtitle {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .form-group {
+    gap: 4px;
+  }
+
+  .form-label {
+    font-size: 14px;
+  }
+
+  .form-input {
+    padding: 12px 14px;
+    font-size: 16px;
+    min-height: 44px;
+  }
+
+  .register-button {
+    padding: 12px 16px;
+    font-size: 16px;
+    min-height: 44px;
+  }
+
+  .register-footer {
+    margin-top: 20px;
+    padding-top: 20px;
+  }
+
+  .register-footer p {
+    font-size: 14px;
   }
 }

@@ -149,3 +149,105 @@
   border-color: #e4e6eb;
   cursor: not-allowed;
 }
+
+/* Tablet responsive styles */
+@media (max-width: 768px) {
+  .feed-container {
+    max-width: 100%;
+    padding: 12px;
+  }
+
+  .feed-content {
+    gap: 12px;
+  }
+
+  .create-post-section {
+    padding: 12px;
+  }
+
+  .create-post-form {
+    gap: 8px;
+  }
+
+  .create-post-input {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .create-post-button {
+    padding: 8px 20px;
+    font-size: 14px;
+  }
+
+  .posts-list {
+    gap: 12px;
+  }
+}
+
+/* Mobile responsive styles */
+@media (max-width: 480px) {
+  .feed-container {
+    padding: 8px;
+  }
+
+  .feed-content {
+    gap: 10px;
+  }
+
+  .create-post-section {
+    padding: 10px;
+    border-radius: 6px;
+  }
+
+  .create-post-form {
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .avatar-placeholder {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .create-post-input-wrapper {
+    gap: 10px;
+  }
+
+  .create-post-input {
+    font-size: 14px;
+    padding: 10px 12px;
+    border-radius: 12px;
+  }
+
+  .create-post-button {
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .feed-loading {
+    padding: 30px 20px;
+    font-size: 14px;
+  }
+
+  .posts-list {
+    gap: 10px;
+  }
+
+  .no-posts {
+    padding: 30px 20px;
+    font-size: 14px;
+  }
+
+  .load-more-section {
+    padding: 12px 0;
+  }
+
+  .load-more-button {
+    width: 100%;
+    padding: 12px 24px;
+    font-size: 14px;
+    min-height: 44px;
+  }
+}

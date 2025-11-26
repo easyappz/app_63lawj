@@ -80,3 +80,88 @@
   margin: 0 auto;
   padding: 16px;
 }
+
+/* Tablet responsive styles */
+@media (max-width: 768px) {
+  .layout-header-content {
+    padding: 0 12px;
+  }
+
+  .layout-logo {
+    font-size: 20px;
+    margin-right: 16px;
+  }
+
+  .layout-nav {
+    gap: 8px;
+  }
+
+  .layout-nav-link {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .layout-logout-btn {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .layout-main {
+    padding: 12px;
+  }
+}
+
+/* Mobile responsive styles */
+@media (max-width: 480px) {
+  .layout-header-content {
+    padding: 0 8px;
+    height: 48px;
+  }
+
+  .layout-logo {
+    font-size: 18px;
+    margin-right: 8px;
+  }
+
+  .layout-nav {
+    gap: 4px;
+  }
+
+  .layout-nav-link {
+    padding: 8px;
+    font-size: 0;
+    min-width: 40px;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .layout-nav-link::before {
+    font-size: 20px;
+  }
+
+  .layout-nav-link[href="/"]::before {
+    content: "🏠";
+  }
+
+  .layout-nav-link[href="/profile"]::before {
+    content: "👤";
+  }
+
+  .layout-logout-btn {
+    padding: 8px;
+    font-size: 0;
+    min-width: 40px;
+    min-height: 40px;
+  }
+
+  .layout-logout-btn::before {
+    content: "🚪";
+    font-size: 18px;
+  }
+
+  .layout-main {
+    padding: 8px;
+  }
+}

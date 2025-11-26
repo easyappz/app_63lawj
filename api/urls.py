@@ -1,6 +1,35 @@
 from django.urls import path
-from .views import HelloView
+from api.views import (
+    RegisterView,
+    LoginView,
+    LogoutView,
+    MeView,
+    PostListCreateView,
+    PostDetailView,
+    PostLikeView,
+    CommentListCreateView,
+    CommentDeleteView,
+    ProfileDetailView,
+    ProfileUpdateView
+)
 
 urlpatterns = [
-    path("hello/", HelloView.as_view(), name="hello"),
+    # Authentication endpoints
+    path('auth/register/', RegisterView.as_view(), name='auth-register'),
+    path('auth/login/', LoginView.as_view(), name='auth-login'),
+    path('auth/logout/', LogoutView.as_view(), name='auth-logout'),
+    path('auth/me/', MeView.as_view(), name='auth-me'),
+    
+    # Posts endpoints
+    path('posts/', PostListCreateView.as_view(), name='posts-list-create'),
+    path('posts/<int:id>/', PostDetailView.as_view(), name='posts-detail'),
+    path('posts/<int:id>/like/', PostLikeView.as_view(), name='posts-like'),
+    
+    # Comments endpoints
+    path('posts/<int:post_id>/comments/', CommentListCreateView.as_view(), name='comments-list-create'),
+    path('comments/<int:id>/', CommentDeleteView.as_view(), name='comments-delete'),
+    
+    # Profile endpoints
+    path('profile/<int:id>/', ProfileDetailView.as_view(), name='profile-detail'),
+    path('profile/', ProfileUpdateView.as_view(), name='profile-update'),
 ]

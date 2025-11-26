@@ -137,10 +137,9 @@ class MeView(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-class PostListCreateView(APIView):
+class PostListView(APIView):
     """
     GET /api/posts/ - Get paginated list of posts
-    POST /api/posts/ - Create a new post
     """
     authentication_classes = [CookieAuthentication]
 
@@ -171,6 +170,13 @@ class PostListCreateView(APIView):
             'results': serializer.data
         }, status=status.HTTP_200_OK)
 
+
+class PostCreateView(APIView):
+    """
+    POST /api/posts/create/ - Create a new post
+    """
+    authentication_classes = [CookieAuthentication]
+
     def post(self, request):
         if not request.user:
             return Response(
@@ -191,7 +197,6 @@ class PostListCreateView(APIView):
 class PostDetailView(APIView):
     """
     GET /api/posts/{id}/ - Get a single post
-    DELETE /api/posts/{id}/ - Delete a post (author only)
     """
     authentication_classes = [CookieAuthentication]
 
@@ -205,6 +210,13 @@ class PostDetailView(APIView):
         post = get_object_or_404(Post, id=id)
         serializer = PostSerializer(post, context={'request': request})
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class PostDeleteView(APIView):
+    """
+    DELETE /api/posts/{id}/delete/ - Delete a post (author only)
+    """
+    authentication_classes = [CookieAuthentication]
 
     def delete(self, request, id):
         if not request.user:
@@ -257,10 +269,9 @@ class PostLikeView(APIView):
         }, status=status.HTTP_200_OK)
 
 
-class CommentListCreateView(APIView):
+class CommentListView(APIView):
     """
     GET /api/posts/{post_id}/comments/ - Get all comments for a post
-    POST /api/posts/{post_id}/comments/ - Create a comment
     """
     authentication_classes = [CookieAuthentication]
 
@@ -275,6 +286,13 @@ class CommentListCreateView(APIView):
         comments = Comment.objects.filter(post=post).select_related('author')
         serializer = CommentSerializer(comments, many=True, context={'request': request})
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class CommentCreateView(APIView):
+    """
+    POST /api/posts/{post_id}/comments/create/ - Create a comment
+    """
+    authentication_classes = [CookieAuthentication]
 
     def post(self, request, post_id):
         if not request.user:

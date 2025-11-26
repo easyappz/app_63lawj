@@ -6,6 +6,7 @@ import PrivateRoute from './components/PrivateRoute';
 import Layout from './components/Layout';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Feed from './pages/Feed';
 import { Home } from './components/Home';
 import './App.css';
 
@@ -32,7 +33,7 @@ function App() {
               </PrivateRoute>
             }
           >
-            <Route index element={<Home />} />
+            <Route index element={<Feed />} />
             <Route path="profile/:id" element={<Home />} />
           </Route>
         </Routes>

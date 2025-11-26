@@ -1,0 +1,143 @@
+.comment-item {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.comment-avatar-link {
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.comment-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.comment-content-wrapper {
+  flex: 1;
+  min-width: 0;
+}
+
+.comment-bubble {
+  background: #f0f2f5;
+  border-radius: 18px;
+  padding: 8px 12px;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.comment-author-name {
+  font-weight: 600;
+  font-size: 13px;
+  color: #050505;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.comment-author-name:hover {
+  text-decoration: underline;
+}
+
+.comment-text {
+  font-size: 15px;
+  color: #050505;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.comment-actions {
+  display: flex;
+  gap: 12px;
+  padding: 4px 12px;
+  font-size: 12px;
+}
+
+.comment-delete-button {
+  background: none;
+  border: none;
+  color: #65676b;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+
+.comment-delete-button:hover {
+  text-decoration: underline;
+}
+
+.comment-form-container {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.comment-form-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.comment-form {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background: #f0f2f5;
+  border-radius: 18px;
+  padding: 8px 12px;
+  gap: 8px;
+}
+
+.comment-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 15px;
+  outline: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
+.comment-submit-button {
+  background: none;
+  border: none;
+  color: #1877f2;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.comment-submit-button:hover:not(:disabled) {
+  opacity: 0.8;
+}
+
+.comment-submit-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
